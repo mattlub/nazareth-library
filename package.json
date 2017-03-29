@@ -1,0 +1,29 @@
+{
+  "name": "week6-hibas-angels",
+  "version": "1.0.0",
+  "description": "Hiba LOVES Reading",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN1/week6-hibas-angels.git"
+  },
+  "keywords": [
+    "hiba",
+    "loves",
+    "reading",
+    "about",
+    "nutella"
+  ],
+  "author": "mohamad, lubes, hiba, jack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN1/week6-hibas-angels/issues"
+  },
+  "homepage": "https://github.com/FACN1/week6-hibas-angels#readme"
+}
