@@ -46,5 +46,5 @@ Column    |         Type          | Modifiers | Info
 ## Stretch Goals
 - Input validation
 - Show which books are currently available
-- HTML Templates
-- generate list.html file on server
+- HTML templates
+- Generate list.html file on server
