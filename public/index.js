@@ -16,29 +16,42 @@ var hibaReads = (function() {
         xhr.send();
     }
 
+    // should receive an array of book objects
     function renderBooks(error, booksArray) {
-        var booksList = document.getElementById('books-list');
+        var booksSection = document.getElementById('books-section');
 
-        // should receive an array of book objects
         if (error) {
-            booksList.innerHTML = ('Error!! ' + error);
-            booksList.style.color = 'red';
+            booksSection.innerHTML = ('Error!! ' + error);
+            booksSection.style.color = 'red';
             return;
         }
 
-        var ulElement = document.createElement('ul');
+        var tableElement = document.createElement('table');
+        tableElement.id = 'books-table';
+
+        // Create table headers
+        var trElement = document.createElement('tr');
+        var headers = ['Title', 'Author', 'Owner'];
+
+        headers.forEach(function(header) {
+            var thElement = document.createElement('th');
+            thElement.innerHTML = header;
+            trElement.appendChild(thElement);
+        });
+
+        tableElement.appendChild(trElement);
 
         booksArray.forEach(function(book) {
-            var liElement = document.createElement('li');
-            var pElement = document.createElement('p');
+            var trElement = document.createElement('tr');
+            var tdElement = document.createElement('td');
 
-            pElement.innerHTML = book.title;
-            liElement.appendChild(pElement);
-            ulElement.appendChild(liElement);
+            tdElement.innerHTML = book.title;
+            trElement.appendChild(tdElement);
+            tableElement.appendChild(trElement);
         });
 
         // should render them to the page
-        booksList.parentNode.replaceChild(ulElement, booksList);
+        booksSection.appendChild(tableElement);
     }
 
     getBooks(renderBooks);
