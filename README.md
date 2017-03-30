@@ -25,12 +25,12 @@ Our website will show a list of books owned by members of the F&C community. It 
 
 Column   |          Type          | Modifiers | Info
 --- | --- | --- | ---
- id         | integer                | not null | primary key, serial
- title      | character varying(100) | not null |
- author     | character varying(100) |          |
- owner      | character varying(30)  | not null |
- summary    | TEXT                   | not null |
- date_added | date                   |          |
+ id           | integer                | not null | primary key, serial
+ title        | character varying(100) | not null |
+ author       | character varying(100) | not null |
+ owner        | character varying(30)  | not null |
+ summary      | text                   | not null |
+ date_created | timestamp              |          |
 
 
 #### reservations
@@ -41,7 +41,7 @@ Column    |         Type          | Modifiers | Info
   name         | character varying(30) | not null |
   from_date    | date                  | not null |
   to_date      | date                  | not null |
-  date_created | date                  |          |
+  date_created | timestamp             |          |
 
 ## Stretch Goals
 - Input validation
