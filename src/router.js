@@ -2,9 +2,9 @@ var handlers = require('./handlers.js');
 
 var routes = {
     '/' : handlers.public,
-    '/add' : handlers.public,
-    '/list' : handlers.public,
-    '/reserve' : handlers.public,
+    '/add.html' : handlers.public,
+    '/list.html' : handlers.public,
+    '/reserve.html' : handlers.public,
     '/index.js' : handlers.public,
     '/main.css' : handlers.public,
     '/get-books' : handlers.getBooks,

@@ -13,7 +13,24 @@ const headers = {
 const handlers = {};
 
 handlers.public = function(req, res) {
+    var fileName;
+    if (req.url === '/') {
+        fileName = 'list.html';
+    } else  {
+        fileName = req.url.slice(1);
+    }
 
+    var filePath = path.join(__dirname, '..', 'public', fileName);
+    fs.readFile(filePath, function(error, file) {
+        if (error) {
+            res.writeHead(500, headers.plain);
+            res.end('Something went wrong when reading this file: ', fileName);
+        }
+
+        var fileType = req.url.split('.')[1];
+        res.writeHead(200, headers[fileType] || headers['html']);
+        res.end(file);
+    });
 }
 
 handlers.addBook = function(req, res) {
