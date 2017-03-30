@@ -15,7 +15,7 @@ var routes = {
 
 module.exports = function(req, res) {
     if (routes[req.url]) {
-        routes(req.url)(req, res);
+        routes[req.url](req, res);
     } else {
         routes[404](req, res);
     }
