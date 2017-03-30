@@ -20,11 +20,11 @@ handlers.addBook = function(req, res) {
     // connect to the db
     // make query to add new book into books table
     var body = [];
-    request.on('data', function(chunk) {
+    req.on('data', function(chunk) {
       body.push(chunk);
     })
 
-    request.on('end', function() {
+    req.on('end', function() {
       body = Buffer.concat(body).toString();
       // at this point, `body` has the entire request body stored in it as a string
     });
