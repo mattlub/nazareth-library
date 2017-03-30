@@ -23,25 +23,25 @@ Our website will show a list of books owned by members of the F&C community. It 
 ## Schema
 #### books
 
-Column   |          Type          | Modifiers | Info
+Column   |          Type          | Modifiers | Other info
 --- | --- | --- | ---
  id           | integer                | not null | primary key, serial
  title        | character varying(100) | not null |
  author       | character varying(100) | not null |
  owner        | character varying(30)  | not null |
  summary      | text                   | not null |
- date_created | timestamp              |          |
+ date_created | timestamp without time zone | not null default now()|
 
 
 #### reservations
-Column    |         Type          | Modifiers | Info
+Column    |         Type          | Modifiers | Other info
 --- | --- | --- | ---
   id           | integer               | not null | primary key, serial
   book_id      | integer               | not null | foreign key, references books(id)
   name         | character varying(30) | not null |
   from_date    | date                  | not null |
   to_date      | date                  | not null |
-  date_created | timestamp             |          |
+  date_created | timestamp without time zone | not null default now() |
 
 ## Stretch Goals
 - Input validation
