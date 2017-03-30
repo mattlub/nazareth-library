@@ -1,6 +1,5 @@
 const url = require('url');
-const pg = require('pg').native;
-const Pool = pg.pool;
+const Pool = require('pg').Pool;
 const env = require('env2')('./config.env');
 
 if (!process.env.DB_URL) {
