@@ -1,6 +1,5 @@
 var fs = require('fs');
 var path = require('path');
-var querystring = require('querystring');
 
 var headers = {
     'html' : {'content-type' : 'text/html'},
@@ -11,6 +10,18 @@ var headers = {
 var handlers = {};
 
 handlers.public = function(req, res) {
+
+}
+
+handlers.addBook = function(req, res) {
+
+}
+
+handlers.addReservation = function(req, res) {
+
+}
+
+handlers.getBooks = function(req, res) {
 
 }
 
