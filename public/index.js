@@ -1,4 +1,4 @@
-var hibaReads = (function() {
+    var hibaReads = (function() {
 
     function getBooks(callback) {
         // make request to our server (/get-books)
@@ -30,24 +30,26 @@ var hibaReads = (function() {
         tableElement.id = 'books-table';
 
         // Create table headers
-        var trElement = document.createElement('tr');
+        var headersRowElement = document.createElement('tr');
         var headers = ['Title', 'Author', 'Owner'];
 
         headers.forEach(function(header) {
             var thElement = document.createElement('th');
             thElement.innerHTML = header;
-            trElement.appendChild(thElement);
+            headersRowElement.appendChild(thElement);
         });
 
-        tableElement.appendChild(trElement);
+        tableElement.appendChild(headersRowElement);
 
         booksArray.forEach(function(book) {
-            var trElement = document.createElement('tr');
-            var tdElement = document.createElement('td');
+            var headersRowElement = document.createElement('tr');
 
-            tdElement.innerHTML = book.title;
-            trElement.appendChild(tdElement);
-            tableElement.appendChild(trElement);
+            headers.forEach(function(header) {
+                var tdElement = document.createElement('td');
+                tdElement.innerHTML = book[header.toLowerCase()];
+                headersRowElement.appendChild(tdElement);
+            });
+            tableElement.appendChild(headersRowElement);
         });
 
         // should render them to the page
