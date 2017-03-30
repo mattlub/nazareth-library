@@ -10,10 +10,7 @@ var headers = {
 var handlers = {};
 
 handlers.public = function(req, res) {
-    var fileType = req.url.split('.')[1];
-    res.writeHead(200, headers[fileType] || headers['html']);
-
-    var fileName = '';
+    var fileName;
     if (req.url === '/') {
         fileName = 'list.html';
     } else  {
@@ -26,6 +23,9 @@ handlers.public = function(req, res) {
             res.writeHead(500, headers.plain);
             res.end('Something went wrong when reading this file: ', fileName);
         }
+
+        var fileType = req.url.split('.')[1];
+        res.writeHead(200, headers[fileType] || headers['html']);
         res.end(file);
     });
 }
