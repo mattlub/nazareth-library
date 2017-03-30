@@ -17,9 +17,32 @@ handlers.public = function(req, res) {
 }
 
 handlers.addBook = function(req, res) {
-//connect to the db
-// make query to add new book into books table
+    // connect to the db
+    // make query to add new book into books table
+    var body = [];
+    request.on('data', function(chunk) {
+      body.push(chunk);
+    })
 
+    request.on('end', function() {
+      body = Buffer.concat(body).toString();
+      // at this point, `body` has the entire request body stored in it as a string
+    });
+
+    connPool.query(
+        'INSERT INTO books (title, author, owner, summary) VALUES ($1,$2,$3,$4)',
+        [body.title,body.author,body.owner,body.summary],
+        function(err, results) {
+            if (err) {
+                res.writehead(500, headers.plain);
+                res.end('err inserting books on db');
+            }
+            else {
+                res.writehead(303, {'location': '/add.html'});
+                res.end();
+            }
+        }
+    );
 }
 
 handlers.addReservation = function(req, res) {
