@@ -22,6 +22,6 @@ var hibaReads = (function() {
     }
 
     // get books and render to page
-    getBooks(renderList);
+    getBooks(renderBooks);
 
 })();
