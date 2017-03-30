@@ -1,4 +1,4 @@
-    var hibaReads = (function() {
+var hibaReads = (function() {
 
     function getBooks(callback) {
         // make request to our server (/get-books)
