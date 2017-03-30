@@ -42,14 +42,14 @@
         tableElement.appendChild(headersRowElement);
 
         booksArray.forEach(function(book) {
-            var headersRowElement = document.createElement('tr');
+            var trElement = document.createElement('tr');
 
             headers.forEach(function(header) {
                 var tdElement = document.createElement('td');
                 tdElement.innerHTML = book[header.toLowerCase()];
-                headersRowElement.appendChild(tdElement);
+                trElement.appendChild(tdElement);
             });
-            tableElement.appendChild(headersRowElement);
+            tableElement.appendChild(trElement);
         });
 
         // should render them to the page
