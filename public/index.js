@@ -17,17 +17,30 @@ var hibaReads = (function() {
     }
 
     function renderBooks(error, booksArray) {
+        var booksList = document.getElementById('books-list');
+
         // should receive an array of book objects
         if (error) {
-            var errorParagraph = document.createElement('p');
-            errorParagraph.innerHTML = 'Error!!';
+            booksList.innerHTML = ('Error!! ' + error);
+            booksList.style.color = 'red';
+            return;
         }
-        booksArray.forEach(function(books) {
 
-        })
+        var ulElement = document.createElement('ul');
+
+        booksArray.forEach(function(book) {
+            var liElement = document.createElement('li');
+            var pElement = document.createElement('p');
+
+            pElement.innerHTML = book.title;
+            liElement.appendChild(pElement);
+            ulElement.appendChild(liElement);
+        });
+
         // should render them to the page
-
+        booksList.parentNode.replaceChild(ulElement, booksList);
     }
+
     getBooks(renderBooks);
 
 })();
