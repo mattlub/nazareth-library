@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const connPool = require('../database/db_connection.js');
 const querystring = require('querystring');
+const connPool = require('../database/db_connection.js');
+const db = require('./db_queries.js');
 
 const headers = {
     'plain' : {'content-type' : 'text/plain'},
@@ -25,7 +26,7 @@ handlers.public = function(req, res) {
     fs.readFile(filePath, function(err, file) {
         if (err) {
             res.writeHead(500, headers.plain);
-            res.end('Something went wrong when reading a file: ', err;
+            res.end('Something went wrong when reading a file: ', err);
         }
 
         var fileType = req.url.split('.')[1];
@@ -39,26 +40,21 @@ handlers.addBook = function(req, res) {
     req.on('data', function(chunk) {
         body.push(chunk);
     })
-
     req.on('end', function() {
         body = Buffer.concat(body).toString();
-
         var parsedData = querystring.parse(body);
 
-        connPool.query(
-            'INSERT INTO books (title, author, owner, summary) VALUES ($1,$2,$3,$4)',
-            [parsedData.title, parsedData.author, parsedData.owner, parsedData.summary],
-            function(err, results) {
-                if (err) {
-                    res.writeHead(500, headers.plain);
-                    res.end('Something went wrong when adding a book to the database: ', err);
-              }
-              else {
-                    res.writeHead(303, {'location': '/add.html'});
-                    res.end();
-              }
+        db.insertBook(connPool, parsedData, function(err, results) {
+            if (err) {
+                res.writeHead(500, headers.plain);
+                res.end('Something went wrong when adding a book to the database: ', err);
             }
-        );
+            else {
+                res.writeHead(303, {'location': '/add.html'});
+                res.end();
+            }
+        })
+
     });
 }
 
@@ -67,7 +63,7 @@ handlers.addReservation = function(req, res) {
 }
 
 handlers.getBooks = function(req, res) {
-    connPool.query('SELECT * FROM books', function(err, results) {
+    db.getBooks(connPool, function(err, results) {
         if (err) {
             res.writeHead(500, headers.plain);
             res.end('Something went wrong when requesting books from the database: ', err);
