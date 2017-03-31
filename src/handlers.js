@@ -1,7 +1,8 @@
 var fs = require('fs');
 var path = require('path');
-var connPool = require('../database/db_connection.js');
 var querystring = require('querystring');
+var connPool = require('../database/db_connection.js');
+var db = require('./db_queries.js');
 
 var headers = {
     'plain' : {'content-type' : 'text/plain'},
@@ -39,26 +40,21 @@ handlers.addBook = function(req, res) {
     req.on('data', function(chunk) {
         body.push(chunk);
     })
-
     req.on('end', function() {
         body = Buffer.concat(body).toString();
-
         var parsedData = querystring.parse(body);
 
-        connPool.query(
-            'INSERT INTO books (title, author, owner, summary) VALUES ($1,$2,$3,$4)',
-            [parsedData.title, parsedData.author, parsedData.owner, parsedData.summary],
-            function(err, results) {
-                if (err) {
-                    res.writeHead(500, headers.plain);
-                    res.end('err inserting books on db');
-              }
-              else {
-                    res.writeHead(303, {'location': '/add.html'});
-                    res.end();
-              }
+        db.insertBook(connPool, parsedData, function(err, results) {
+            if (err) {
+                res.writeHead(500, headers.plain);
+                res.end('err inserting books on db');
             }
-        );
+            else {
+                res.writeHead(303, {'location': '/add.html'});
+                res.end();
+            }
+        })
+
     });
 }
 
@@ -67,7 +63,7 @@ handlers.addReservation = function(req, res) {
 }
 
 handlers.getBooks = function(req, res) {
-    connPool.query('SELECT * FROM books', function(err, results) {
+    db.getBooks(connPool, function(err, results) {
         if (err) {
             res.writeHead(500, headers.plain);
             res.end('err with database query');
