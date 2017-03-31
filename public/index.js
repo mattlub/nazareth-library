@@ -4,10 +4,10 @@ var hibaReads = (function() {
         // make request to our server (/get-books)
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
-            if (xhr.readeState === 4 && xhr.status === 200){
+            if (xhr.readyState === 4 && xhr.status === 200){
                 callback(null, JSON.parse(xhr.responseText));
             }
-            else if (xhr.status === 500){
+            else if (xhr.status === 500) {
                 var errorMessage = xhr.responseText;
                 callback(errorMessage, null);
             }
@@ -31,7 +31,7 @@ var hibaReads = (function() {
 
         // Create table headers
         var headersRowElement = document.createElement('tr');
-        var headers = ['Title', 'Author', 'Owner'];
+        var headers = ['Id', 'Title', 'Author', 'Owner', 'Summary', 'Date_Created'];
 
         headers.forEach(function(header) {
             var thElement = document.createElement('th');
