@@ -1,10 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const querystring = require('querystring');
-const connPool = require('../database/db_connection.js');
-const db = require('./db_queries.js');
+var fs = require('fs');
+var path = require('path');
+var querystring = require('querystring');
+var connPool = require('../database/db_connection.js');
+var db = require('./db_queries.js');
 
-const headers = {
+var headers = {
     'plain' : {'content-type' : 'text/plain'},
     'html' : {'content-type' : 'text/html'},
     'css' : {'content-type' : 'text/css'},
@@ -12,7 +12,7 @@ const headers = {
     'json' : {'content-type' : 'application/json'}
 }
 
-const handlers = {};
+var handlers = {};
 
 handlers.public = function(req, res) {
     var fileName;
