@@ -22,10 +22,10 @@ handlers.public = function(req, res) {
     }
 
     var filePath = path.join(__dirname, '..', 'public', fileName);
-    fs.readFile(filePath, function(error, file) {
-        if (error) {
+    fs.readFile(filePath, function(err, file) {
+        if (err) {
             res.writeHead(500, headers.plain);
-            res.end('Something went wrong when reading this file: ', fileName);
+            res.end('Something went wrong when reading a file: ', err;
         }
 
         var fileType = req.url.split('.')[1];
@@ -51,7 +51,7 @@ handlers.addBook = function(req, res) {
             function(err, results) {
                 if (err) {
                     res.writeHead(500, headers.plain);
-                    res.end('err inserting books on db');
+                    res.end('Something went wrong when adding a book to the database: ', err);
               }
               else {
                     res.writeHead(303, {'location': '/add.html'});
@@ -70,7 +70,7 @@ handlers.getBooks = function(req, res) {
     connPool.query('SELECT * FROM books', function(err, results) {
         if (err) {
             res.writeHead(500, headers.plain);
-            res.end('err with database query');
+            res.end('Something went wrong when requesting books from the database: ', err);
         }
         else {
             res.writeHead(200, headers.json);
