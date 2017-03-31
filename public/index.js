@@ -31,7 +31,7 @@ var hibaReads = (function() {
 
         // Create table headers
         var headersRowElement = document.createElement('tr');
-        var headers = ['Id', 'Title', 'Author', 'Owner', 'Summary', 'Date_Created'];
+        var headers = ['Title', 'Author', 'Owner', 'Summary', 'Date_Created'];
 
         headers.forEach(function(header) {
             var thElement = document.createElement('th');
