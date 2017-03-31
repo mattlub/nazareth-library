@@ -63,7 +63,7 @@ handlers.addReservation = function(req, res) {
 }
 
 handlers.getBooks = function(req, res) {
-    connPool.query('SELECT * FROM books', function(err, results) {
+    db.getBooks(connPool, function(err, results) {
         if (err) {
             res.writeHead(500, headers.plain);
             res.end('err with database query');
