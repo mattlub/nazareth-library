@@ -11,6 +11,7 @@ cd week6-hibas-angels
 npm install
 npm start
 ```
+- You'll need to set up a database using db_build.js or get the URI for our database first
 - Navigate to `localhost:4000` in your browser of choice
 
 ## User Stories
