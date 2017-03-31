@@ -4,6 +4,15 @@ Hiba LOVES Reading, but she doesn't have a good place to see which books her fri
 ## Outline
 Our website will show a list of books owned by members of the F&C community. It will offer people the chance to add books they own to the list, and make a reservation to borrow a book they want to read.
 
+## Setup
+```bash
+git clone https://github.com/FACN1/week6-hibas-angels.git
+cd week6-hibas-angels
+npm install
+npm start
+```
+- Navigate to `localhost:4000` in your browser of choice
+
 ## User Stories
 **As a member of F&C Nazareth community:**
 > I want to see a list of books people own
