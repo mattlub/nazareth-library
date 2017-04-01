@@ -1,0 +1,24 @@
+header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background: #eee;
+  height: 100px;
+}
+
+.title {
+  text-align: center;
+}
+
+.navbar {
+  text-align: center;
+}
+
+.navlink {
+  padding: 0px 10px;
+}
+
+.content {
+  margin-top: 120px;
+}
