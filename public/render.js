@@ -43,9 +43,10 @@ var Render = (function() {
   function renderBooksList(error, booksArray) {
     var booksSection = document.getElementById('books-section');
     var listNode = document.createElement('ul');
+    listNode.classList.add('books-list');
     booksArray.forEach(function(book) {
       var liNode = document.createElement('li');
-
+      liNode.classList.add('book-list-item');
       // add html for reservations
       var reservationsHTML = '';
       book.reservations.forEach(function(reservation) {
