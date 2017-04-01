@@ -2,14 +2,20 @@ var handlers = require('./handlers.js');
 
 var routes = {
     '/' : handlers.public,
+
     '/add.html' : handlers.public,
     '/list.html' : handlers.public,
     '/reserve.html' : handlers.public,
+
     '/index.js' : handlers.public,
+    '/render.js' : handlers.public,
+
     '/main.css' : handlers.public,
+
     '/get-books' : handlers.getBooks,
     '/add-book' : handlers.addBook,
     '/add-reservation' : handlers.addReservation,
+    
     '404' : handlers.notFound
 }
 

@@ -63,14 +63,24 @@ handlers.addReservation = function(req, res) {
 }
 
 handlers.getBooks = function(req, res) {
-    db.getBooks(connPool, function(err, results) {
+    // db.getBooks(connPool, function(err, results) {
+    //     if (err) {
+    //         res.writeHead(500, headers.plain);
+    //         res.end('Something went wrong when requesting books from the database: ', err);
+    //     }
+    //     else {
+    //         res.writeHead(200, headers.json);
+    //         res.end(JSON.stringify(results.rows));
+    //     }
+    // });
+    db.getBooksWithReservations(connPool, function(err, results) {
         if (err) {
             res.writeHead(500, headers.plain);
             res.end('Something went wrong when requesting books from the database: ', err);
         }
         else {
             res.writeHead(200, headers.json);
-            res.end(JSON.stringify(results.rows));
+            res.end(JSON.stringify(results));
         }
     });
 }
