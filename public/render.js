@@ -50,13 +50,20 @@ var Render = (function() {
       var reservationsHTML = '';
       book.reservations.forEach(function(reservation) {
         reservationsHTML +=
-        `<div>By ${reservation.name} from ${reservation.from_date} to ${reservation.to_date}</div>`
+        `<ul>
+          <li>By ${reservation.name} from ${reservation.from_date.slice(0,10)} to ${reservation.to_date.slice(0,10)}</li>
+        </ul>`
       });
+
+      var availableHTML = book.isAvailable ? '<p>AVAILABLE NOW</p>' : '';
+
       var listHTML =
       `<div>
-        <h4>${book.title}</h4>
-        <p>Owned by ${book.owner}</p>
-        <h6>Reservations: ${book.reservations.length}</h6>`
+        <h4>${book.title} by ${book.author}</h4>`
+      + availableHTML
+      + `<p>Summary: ${book.summary}</p>
+        <p>Owner: ${book.owner}</p>
+        <p>Reservations: ${book.reservations.length}</p>`
       + reservationsHTML
       + `</div>`;
 
@@ -66,7 +73,6 @@ var Render = (function() {
     booksSection.innerHTML = '';
     booksSection.appendChild(listNode);
   }
-
 
   return {
     renderBooksTable: renderBooksTable,
