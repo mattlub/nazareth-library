@@ -1,18 +1,26 @@
-# week6-hibas-angels
-Hiba LOVES Reading, but she doesn't have a good place to see which books her friends might be able to offer her. So Hiba's Angels decided to create Hiba Reads.
+# nazareth library
+An app where users can submit which books they own and make reservations to borrow books.
+Based off Hiba Reads- Hiba's Angels' week 6 project.
 
 ## Outline
-Our website will show a list of books owned by members of the F&C community. It will offer people the chance to add books they own to the list, and make a reservation to borrow a book they want to read.
+- the website home page will show a list of books owned by members of the F&C community.
+- the site will require login (with github?) to make reservations
+- It will offer people the chance to add books they own to the list, and make a reservation to borrow a book they want to read.
+- It will allow comments/reviews of books
 
-## Setup
+## TODO
+- move to Hapi
+- move to handlebars
+- user login
+- travis
+- linter
+- Input validation
+- Show which books are currently available
+
+## Local setup
 ```bash
-git clone https://github.com/FACN1/week6-hibas-angels.git
-cd week6-hibas-angels
-npm install
-npm start
+# TODO
 ```
-- You'll need to set up a database using db_build.js or get the URI for our database first
-- Navigate to `localhost:4000` in your browser of choice
 
 ## User Stories
 **As a member of F&C Nazareth community:**
@@ -30,7 +38,7 @@ npm start
 
 > So I can be sure I will have a chance to read it at a time which is convenient for me
 
-## Schema
+## Database Schema
 #### books
 
 Column   |          Type          | Modifiers | Other info
@@ -53,8 +61,6 @@ Column    |         Type          | Modifiers | Other info
   to_date      | date                  | not null |
   date_created | timestamp without time zone | not null default now() |
 
-## Stretch Goals
-- Input validation
-- Show which books are currently available
-- HTML templates
-- Generate list.html file on server
+#### Users
+
+#### Comments
