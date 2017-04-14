@@ -28,7 +28,6 @@
   "homepage": "https://github.com/FACN1/week6-hibas-angels#readme",
   "devDependencies": {
     "nodemon": "^1.11.0",
-    "shot": "^3.4.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3"
   },

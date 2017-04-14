@@ -9,13 +9,16 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 - It will allow comments/reviews of books
 
 ## TODO
-- move to Hapi
-- move to handlebars
-- user login
-- travis
-- linter
-- Input validation
-- Show which books are currently available
+- [x] move to Hapi
+- [x] move to handlebars
+- [ ] user login (jwt2)
+- [ ] user login (custom scheme)
+- [ ] travis
+- [ ] linter
+- [ ] Input validation
+- [ ] Show which books are currently available
+- [ ] Code coverage
+- [ ] Add comments/reviews and likes
 
 ## Local setup
 ```bash

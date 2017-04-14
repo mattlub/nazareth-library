@@ -14,6 +14,19 @@ tape('check the home route', (t) => {
   });
 });
 
+tape('check the add route', (t) => {
+  const options = {
+    url: '/add',
+    method: 'GET'
+  };
+  server.inject(options, (res) => {
+    const testString = '<form id="book-form"';
+    t.equal(res.statusCode, 200, 'status code should be 200');
+    t.ok(res.payload.includes(testString), 'served html should contain form');
+    t.end();
+  });
+});
+
 tape('check static files are served', (t) => {
   const options = {
     url: '/main.css',
@@ -26,5 +39,3 @@ tape('check static files are served', (t) => {
     t.end();
   });
 });
-
-tape.onFinish(() => process.exit(0));
