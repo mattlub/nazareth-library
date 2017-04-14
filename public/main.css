@@ -41,7 +41,7 @@ header {
 
 /* LIST */
 
-.books-list {
+.book-list {
   margin: 0px;
   padding: 0px;
   list-style: none;
@@ -55,7 +55,7 @@ header {
   background: #eee;
 }
 
-.book-list-item h4 {
+.book-list-item h2 {
   margin: 5px 0px;
 }
 

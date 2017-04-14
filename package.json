@@ -1,15 +1,15 @@
 {
-  "name": "week6-hibas-angels",
+  "name": "nazareth-library",
   "version": "1.0.0",
-  "description": "Hiba LOVES Reading",
+  "description": "",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node src/start.js",
     "test": "node tests/back-end/tests.js | tap-spec",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon ./src/start.js"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,7 @@
   "keywords": [
     "hiba",
     "loves",
-    "reading",
-    "about",
-    "nutella"
+    "reading"
   ],
   "author": "mohamad, lubes, hiba, jack",
   "license": "ISC",
@@ -36,6 +34,10 @@
   },
   "dependencies": {
     "env2": "^2.1.1",
-    "pg": "^6.1.5"
+    "handlebars": "^4.0.6",
+    "hapi": "^16.1.1",
+    "inert": "^4.2.0",
+    "pg": "^6.1.5",
+    "vision": "^4.1.1"
   }
 }

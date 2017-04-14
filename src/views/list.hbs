@@ -1,0 +1,18 @@
+<ul class="book-list">
+  {{#each books}}
+    <li class="book-list-item">
+      <h2>{{title}}</h2>
+      <p>{{author}}</p>
+      <p>Owned by {{owner}}</p>
+      <p>{{summary}}</p>
+      <h3>reservations:</h3>
+      <ul>
+        {{#each reservations}}
+          <li>
+            <p>By {{name}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    </li>
+  {{/each}}
+</ul>

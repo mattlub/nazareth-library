@@ -1,10 +1,51 @@
-var http = require('http');
-var router = require('./router.js');
+const path = require('path');
 
-var port = process.env.PORT || 4000;
+const hapi = require('hapi');
+const vision = require('vision');
+const routes = require('./router.js');
+const inert = require('inert');
+const handlebars = require('handlebars');
+// const jwtAuth = require('hapi-auth-jwt2');
 
-var server = http.createServer(router);
+const port = process.env.PORT || 4040;
 
-server.listen(port, function() {
-    console.log('Server is listening on port', port);
+const server = new hapi.Server();
+
+server.connection({
+  port
 });
+
+server.register([inert, vision], (err) => {
+  if (err) throw err;
+
+  // function jwtValidate(decoded, request, callback) {
+  //   // decoded contains info about token but not payload
+  //   // custom validation
+  //   callback(null, true);
+  // }
+  //
+  // // create a strategy named jwt-strategy
+  // server.auth.strategy('jwt-strategy', 'jwt', 'optional', {
+  //   key: process.env.JWT_SECRET,
+  //   validateFunc: jwtValidate,
+  //   verifyOptions: {
+  //     algorithms: ['HS256'] // pick a strong algorithm
+  //   }
+  // });
+
+  server.views({
+    engines: {
+      hbs: handlebars
+    },
+    relativeTo: __dirname,
+    helpersPath: './views/helpers',
+    path: './views',
+    layout: 'default',
+    partialsPath: './views/partials',
+    layoutPath: './views/layout'
+  });
+
+  server.route(routes);
+});
+
+module.exports = server;
