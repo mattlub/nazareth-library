@@ -5,8 +5,6 @@ module.exports = {
     // TODO: change from id to username
     console.log(`getting user page for user with name ${request.params.id}`);
     dbQueries.getUserInfo(request.params.id, (err, results) => {
-      console.log('result.rows of getUserInfo: ');
-      console.log(results.rows);
       if (err) {
         return reply.redirect('/error');
       }
