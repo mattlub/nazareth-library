@@ -9,11 +9,11 @@
 
       <p>Owned by <a href="./users/{{owner}}">{{owner}}</a></p>
       <p>{{summary}}</p>
-      <h3>reservations:</h3>
+      <h3 class="reservations-header">reservations:</h3>
       <ul>
         {{#each reservations}}
         <li>
-          <p>By {{name}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
+          <p>By {{user_id}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
         </li>
         {{/each}}
 
@@ -22,7 +22,8 @@
       {{#if ../isAuthenticated}}
 
       <h4>Make a new reservation: </h4>
-      <form method="POST" action="/add-reservation">
+      <!-- form submit is handled in js  -->
+      <form class="reservations-form" method="POST" action="/add-reservation" data-book_id={{id}}>
         <label>from: </label><input type="date" name="from_date"/>
         <label>to: </label><input type="date" name="to_date"/>
         <button type="submit">Submit</button>

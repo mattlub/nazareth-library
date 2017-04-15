@@ -10,9 +10,11 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 
 ## IMMEDIATE TODO
 - [x] amend add-book form/route to get owner from login credentials
+- [x] complete add-reservation route
+- [ ] add user profile pages
 - [ ] get owner name not just id in getBooks
-- complete add-reservation route
-- add user profile pages
+- [ ] remove connPool as arg from dbQueries functions
+- [ ] add book detail page- with reviews and reservations
 
 ## GENERAL TODO
 - [x] move to Hapi
