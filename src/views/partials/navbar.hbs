@@ -1,7 +1,4 @@
 <nav class="navbar">
-  <a class="navlink" href="./add">Add</a>
-  <a class="current navlink" href="./">List</a>
-  <!-- <a class="navlink" href="./reserve">Reserve</a> -->
 
   {{#if isAuthenticated}}
 
@@ -10,7 +7,11 @@
 
   {{else}}
 
-  <a class="navlink" href="./login">Login</a>
+  <span>Please <a class="navlink" href="./login">login!</a></span>
 
   {{/if}}
+
+  <a class="navlink" href="./add">Add Book</a>
+  <a class="current navlink" href="./">Book List</a>
+
 </nav>

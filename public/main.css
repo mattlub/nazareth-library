@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  font-family: Helvetica;
+  font-family: 'Patua One', cursive;
 }
 
 /* HEADER */
@@ -10,17 +10,19 @@ header {
   width: 100%;
   top: 0px;
   left: 0px;
-  background: #900;
+  background: #4480cf;
   height: 120px;
 }
 
 .title {
   text-align: center;
-  color: #ffe4d0;
+  color: #eeeeee;
+  font-family: 'Patua One', cursive;
 }
 
 .navbar {
   text-align: center;
+  font-family: 'Patua One', cursive;
 }
 
 .navlink {
