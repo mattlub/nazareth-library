@@ -1,4 +1,3 @@
-const connPool = require('../../database/db_connection.js');
 const dbQueries = require('../db_queries.js');
 
 module.exports = {
@@ -6,7 +5,7 @@ module.exports = {
   path: '/',
   handler: (request, reply) => {
     // get books
-    dbQueries.getBooksWithReservations(connPool, (error, result) => {
+    dbQueries.getBooksWithReservations((error, result) => {
       /*
       result array contains book objects:
       var bookObj = {

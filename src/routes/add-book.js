@@ -1,4 +1,3 @@
-const connPool = require('../../database/db_connection.js');
 const dbQueries = require('../db_queries.js');
 
 module.exports = {
@@ -20,7 +19,7 @@ module.exports = {
     );
     console.log('trying to add book:');
     console.log(bookData);
-    dbQueries.insertBook(connPool, bookData, (err) => {
+    dbQueries.insertBook(bookData, (err) => {
       if (err) {
         console.log('error inserting book.');
         return reply(err);

@@ -1,4 +1,3 @@
-const connPool = require('../../database/db_connection.js');
 const dbQueries = require('../db_queries.js');
 
 module.exports = {

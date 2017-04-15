@@ -10,19 +10,19 @@ dbQueries.addOrUpdateUser = (info, callback) => {
   dbConnection.query(sql, [info.id, info.username, info.location, info.avatar_url, info.github_access_token], callback);
 }
 
-dbQueries.getBooks = (connPool, callback) => {
-    connPool.query('SELECT * FROM books', callback);
+dbQueries.getBooks = (callback) => {
+    dbConnection.query('SELECT * FROM books', callback);
 }
 
-dbQueries.getBooksWithReservations = (connPool, callback) => {
+dbQueries.getBooksWithReservations = (callback) => {
   /*
   gets
   */
-    // TODO get owner name also with another join
+  // TODO get owner name also with another join
   var sqlQuery =
   'SELECT books.id, books.title, books.author, books.owner_id, books.summary, reservations.id as reservation_id, reservations.user_id, reservations.from_date, reservations.to_date FROM books LEFT JOIN reservations ON books.id=reservations.book_id ORDER BY reservations.from_date;';
   var booksWithReservations = {};
-  connPool.query(sqlQuery, function(err, dbResult) {
+  dbConnection.query(sqlQuery, function(err, dbResult) {
     if (err) {
       return callback(err);
     }
@@ -72,8 +72,8 @@ dbQueries.getBooksWithReservations = (connPool, callback) => {
   });
 }
 
-dbQueries.insertBook = (connPool, data, callback) => {
-  connPool.query(
+dbQueries.insertBook = (data, callback) => {
+  dbConnection.query(
     'INSERT INTO books (title, author, owner_id, summary) VALUES ($1, $2, $3, $4);',
     [data.title, data.author, data.owner_id, data.summary],
     callback
