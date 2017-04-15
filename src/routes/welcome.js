@@ -50,16 +50,19 @@ module.exports = {
         if (infoError) {
           return reply.redirect('/error');
         }
-        const userInfo = {
+        const userInfoForJWT = {
           id: infoBody.id,
           username: infoBody.login,
           location: infoBody.location,
           avatar_url: infoBody.avatar_url,
-          github_access_token: githubAccessToken
         };
+        const userInfoForDb = Object.assign({},
+          userInfoForJWT,
+          {github_access_token: githubAccessToken}
+        );
         console.log('trying to add/update user in db:');
         // 3) store user info in db
-        dbQueries.addOrUpdateUser(userInfo, (error) => {
+        dbQueries.addOrUpdateUser(userInfoForDb, (error) => {
           if (error) {
             console.log('errored trying to add/update user in db:');
             return reply (error)
@@ -71,7 +74,7 @@ module.exports = {
             subject: 'github-data'
           };
           // 4) create JWT with some user info
-          return jwt.sign(userInfo, process.env.JWT_SECRET, jwtOptions, (error, token) => {
+          return jwt.sign(userInfoForJWT, process.env.JWT_SECRET, jwtOptions, (error, token) => {
             if (error) {
               return reply (error)
               // return reply.redirect('./error');

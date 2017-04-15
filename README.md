@@ -8,7 +8,13 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 - It will offer people the chance to add books they own to the list, and make a reservation to borrow a book they want to read.
 - It will allow comments/reviews of books
 
-## TODO
+## IMMEDIATE TODO
+- [x] amend add-book form/route to get owner from login credentials
+- [ ] get owner name not just id in getBooks
+- complete add-reservation route
+- add user profile pages
+
+## GENERAL TODO
 - [x] move to Hapi
 - [x] move to handlebars
 
@@ -19,6 +25,7 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 
 - [ ] books detail view
   - new db query
+  - comments
 - [ ] user profile pages
 
 - [ ] travis

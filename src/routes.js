@@ -5,7 +5,7 @@ module.exports = [
   require('./routes/users'),
   require('./routes/user_detail'),
 
-  require('./routes/add-post'),
+  require('./routes/add-book'),
   require('./routes/add-reservation'),
 
   require('./routes/login'),

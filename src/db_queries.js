@@ -18,8 +18,9 @@ dbQueries.getBooksWithReservations = (connPool, callback) => {
   /*
   gets
   */
+    // TODO get owner name also with another join
   var sqlQuery =
-  'SELECT books.id, books.title, books.author, books.owner, books.summary, reservations.id as reservation_id, reservations.name, reservations.from_date, reservations.to_date FROM books LEFT JOIN reservations ON books.id=reservations.book_id ORDER BY reservations.from_date;';
+  'SELECT books.id, books.title, books.author, books.owner_id, books.summary, reservations.id as reservation_id, reservations.name, reservations.from_date, reservations.to_date FROM books LEFT JOIN reservations ON books.id=reservations.book_id ORDER BY reservations.from_date;';
   var booksWithReservations = {};
   connPool.query(sqlQuery, function(err, dbResult) {
     if (err) {
@@ -33,7 +34,7 @@ dbQueries.getBooksWithReservations = (connPool, callback) => {
           id: result.id,
           title: result.title,
           author: result.author,
-          owner: result.owner,
+          owner: result.owner_id,
           summary: result.summary,
           reservations: [],
           isAvailable: true
@@ -70,10 +71,10 @@ dbQueries.getBooksWithReservations = (connPool, callback) => {
   });
 }
 
-dbQueries.insertBook = (connPool, parsedData, callback) => {
+dbQueries.insertBook = (connPool, data, callback) => {
     connPool.query(
-        'INSERT INTO books (title, author, owner, summary) VALUES ($1, $2, $3, $4)',
-        [parsedData.title, parsedData.author, parsedData.owner, parsedData.summary],
+        'INSERT INTO books (title, author, owner_id, summary) VALUES ($1, $2, $3, $4);',
+        [data.title, data.author, data.owner_id, data.summary],
         callback
     );
 };

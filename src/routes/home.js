@@ -20,7 +20,7 @@ module.exports = {
       };
       */
       if (error) {
-        reply.redirect('./error');
+        return reply.redirect('./error');
       }
       const templateContext = {
         // auth info
