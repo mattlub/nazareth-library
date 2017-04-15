@@ -2,7 +2,7 @@ module.exports = {
   method: 'GET',
   path: '/books/{id}',
   handler: (request, reply) => {
-    reply(`user page for book with id ${request.params.id}`);
+    reply(`page for book with id ${request.params.id}`);
     // dbQueries.getUserInfo(username, (err, results) => {
     //   const context = {
     //

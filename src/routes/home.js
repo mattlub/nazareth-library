@@ -24,9 +24,9 @@ module.exports = {
       const templateContext = {
         // auth info
         isAuthenticated: request.auth.isAuthenticated,
-        user_id: request.auth.credentials ? request.auth.credentials.id : null,
-        username: request.auth.credentials ? request.auth.credentials.username : null,
-        avatar_url: request.auth.credentials ? request.auth.credentials.avatar_url : null,
+        auth_user_id: request.auth.credentials ? request.auth.credentials.id : null,
+        auth_username: request.auth.credentials ? request.auth.credentials.username : null,
+        auth_avatar_url: request.auth.credentials ? request.auth.credentials.avatar_url : null,
         // data
         // TODO decide ordering, max num to display
         books: result,
