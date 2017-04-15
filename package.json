@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node src/start.js",
     "test": "node tests/back-end/tests.js | tap-spec",
-    "dev": "nodemon ./src/start.js"
+    "dev": "./node_modules/nodemon/bin/nodemon.js src/start.js"
   },
   "repository": {
     "type": "git",
@@ -35,8 +35,11 @@
     "env2": "^2.1.1",
     "handlebars": "^4.0.6",
     "hapi": "^16.1.1",
+    "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
+    "jsonwebtoken": "^7.3.0",
     "pg": "^6.1.5",
+    "request": "^2.81.0",
     "vision": "^4.1.1"
   }
 }

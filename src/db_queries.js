@@ -1,10 +1,23 @@
-dbQueries = {};
+// better to have this required here or pass it in as argument to functions??
+// I think have it here
+const dbConnection = require('../database/db_connection.js');
 
-dbQueries.getBooks = function(connPool, callback) {
+dbQueries = module.exports = {};
+
+dbQueries.addOrUpdateUser = (info, callback) => {
+  // add user to db or update info if already there
+  const sql = 'INSERT INTO users (id, username, location, avatar_url, github_access_token) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO UPDATE SET username=$2, location=$3, avatar_url=$4, github_access_token=$5;'
+  dbConnection.query(sql, [info.id, info.username, info.location, info.avatar_url, info.github_access_token], callback);
+}
+
+dbQueries.getBooks = (connPool, callback) => {
     connPool.query('SELECT * FROM books', callback);
 }
 
-dbQueries.getBooksWithReservations = function(connPool, callback) {
+dbQueries.getBooksWithReservations = (connPool, callback) => {
+  /*
+  gets
+  */
   var sqlQuery =
   'SELECT books.id, books.title, books.author, books.owner, books.summary, reservations.id as reservation_id, reservations.name, reservations.from_date, reservations.to_date FROM books LEFT JOIN reservations ON books.id=reservations.book_id ORDER BY reservations.from_date;';
   var booksWithReservations = {};
@@ -57,12 +70,10 @@ dbQueries.getBooksWithReservations = function(connPool, callback) {
   });
 }
 
-dbQueries.insertBook = function(connPool, parsedData, callback) {
+dbQueries.insertBook = (connPool, parsedData, callback) => {
     connPool.query(
         'INSERT INTO books (title, author, owner, summary) VALUES ($1, $2, $3, $4)',
         [parsedData.title, parsedData.author, parsedData.owner, parsedData.summary],
         callback
     );
-}
-
-module.exports = dbQueries;
+};

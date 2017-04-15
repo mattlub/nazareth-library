@@ -2,4 +2,15 @@
   <a class="navlink" href="./add">Add</a>
   <a class="current navlink" href="./">List</a>
   <a class="navlink" href="./reserve">Reserve</a>
+
+  {{#if isAuthenticated}}
+
+  <!-- <img id="navbar-github-avatar" src="{{avatar_url}}"/> -->
+  <span id="navbar-welcome-message">Hello, {{username}}!<span>
+
+  {{else}}
+
+  <a class="navlink" href="./login">Login</a>
+
+  {{/if}}
 </nav>

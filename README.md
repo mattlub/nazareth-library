@@ -11,8 +11,16 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 ## TODO
 - [x] move to Hapi
 - [x] move to handlebars
-- [ ] user login (jwt2)
+
+- [x] user login (jwt2) (DONE 15/4/17)
+  - [x] store users in db
+  - [ ] add logout
 - [ ] user login (custom scheme)
+
+- [ ] books detail view
+  - new db query
+- [ ] user profile pages
+
 - [ ] travis
 - [ ] linter
 - [ ] Input validation
