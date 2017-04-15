@@ -12,10 +12,17 @@
       <h3>reservations:</h3>
       <ul>
         {{#each reservations}}
-          <li>
-            <p>By {{name}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
-          </li>
+        <li>
+          <p>By {{name}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
+        </li>
         {{/each}}
+        <li>
+          <form method="POST" action="/add-reservation">
+            <label>from:</label><input type="date" name="from_date"/>
+            <label>to:</label><input type="date" name="to_date"/>
+            <button type="submit">New reservation</button>
+          </form>
+        </li>
       </ul>
     </li>
   {{/each}}
