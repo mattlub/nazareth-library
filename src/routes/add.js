@@ -3,6 +3,7 @@ module.exports = {
   path: '/add',
   handler: (request, reply) => {
     const templateContext = {
+      base_url: process.env.BASE_URL,
       // auth info
       isAuthenticated: request.auth.isAuthenticated,
       user_id: request.auth.credentials ? request.auth.credentials.id : null,

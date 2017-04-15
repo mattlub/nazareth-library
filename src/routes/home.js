@@ -30,6 +30,7 @@ module.exports = {
         // data
         // TODO decide ordering, max num to display
         books: result,
+        base_url: process.env.BASE_URL
       };
       reply.view('list', templateContext);
     })

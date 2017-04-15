@@ -11,7 +11,7 @@ dbQueries.addOrUpdateUser = (info, callback) => {
 }
 
 dbQueries.getBooks = (callback) => {
-    dbConnection.query('SELECT * FROM books', callback);
+  dbConnection.query('SELECT * FROM books', callback);
 }
 
 dbQueries.getBooksWithReservations = (callback) => {
@@ -70,6 +70,10 @@ dbQueries.getBooksWithReservations = (callback) => {
     }
     callback(null, booksWithReservationsArr);
   });
+}
+
+dbQueries.getUserInfo = (id, callback) => {
+  dbConnection.query('SELECT name, username, location, avatar_url FROM users WHERE id=$1', [id], callback);
 }
 
 dbQueries.insertBook = (data, callback) => {

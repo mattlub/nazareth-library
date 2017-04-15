@@ -13,7 +13,7 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 - [x] complete add-reservation route
 - [ ] add user profile pages
 - [ ] get owner name not just id in getBooks
-- [ ] remove connPool as arg from dbQueries functions
+- [x] remove connPool as arg from dbQueries functions
 - [ ] add book detail page- with reviews and reservations
 
 ## GENERAL TODO
