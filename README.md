@@ -25,7 +25,10 @@ Based off Hiba Reads- Hiba's Angels' week 6 project.
 - [ ] linter
 - [ ] Input validation
 - [ ] Show which books are currently available
-- [ ] Code coverage
+
+- [ ] extensive testing
+- [ ] add code coverage
+
 - [ ] Add comments/reviews and likes
 
 ## Local setup

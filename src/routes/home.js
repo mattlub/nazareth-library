@@ -7,6 +7,18 @@ module.exports = {
   handler: (request, reply) => {
     // get books
     dbQueries.getBooksWithReservations(connPool, (error, result) => {
+      /*
+      result array contains book objects:
+      var bookObj = {
+        id: int,
+        title: string,
+        author: string,
+        owner: string,
+        summary: string,
+        reservations: [],
+        isAvailable: bool
+      };
+      */
       if (error) {
         reply.redirect('./error');
       }

@@ -1,9 +1,9 @@
 module.exports = {
   method: 'GET',
-  path: '/users/{user_id}',
+  path: '/users/{username}',
   handler: (request, reply) => {
-    reply(`user page for user with id ${request.params.user_id}`);
-    // dbQueries.getUserInfo(user_id, (err, results) => {
+    reply(`user page for user with name ${request.params.username}`);
+    // dbQueries.getUserInfo(username, (err, results) => {
     //   const context = {
     //
     //   };

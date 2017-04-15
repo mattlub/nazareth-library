@@ -7,7 +7,7 @@
       <p>Currently available!</p>
       {{/if}}
 
-      <p>Owned by {{owner}}</p>
+      <p>Owned by <a href="./users/{{owner}}">{{owner}}</a></p>
       <p>{{summary}}</p>
       <h3>reservations:</h3>
       <ul>
@@ -16,14 +16,23 @@
           <p>By {{name}} from {{formatDate from_date}} to {{formatDate to_date}}</p>
         </li>
         {{/each}}
-        <li>
-          <form method="POST" action="/add-reservation">
-            <label>from:</label><input type="date" name="from_date"/>
-            <label>to:</label><input type="date" name="to_date"/>
-            <button type="submit">New reservation</button>
-          </form>
-        </li>
+
       </ul>
+
+      {{#if ../isAuthenticated}}
+
+      <h4>Make a new reservation: </h4>
+      <form method="POST" action="/add-reservation">
+        <label>from: </label><input type="date" name="from_date"/>
+        <label>to: </label><input type="date" name="to_date"/>
+        <button type="submit">Submit</button>
+      </form>
+
+      {{else}}
+
+      <h4><a href='./login'>Login</a> to make a reservation!</h4>
+
+      {{/if}}
     </li>
   {{/each}}
 </ul>
